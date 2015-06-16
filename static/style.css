@@ -1,0 +1,20 @@
+body{
+    padding-top:50px;
+}
+h1{
+    font-family: 'Hanna', serif;
+    padding-bottom:10px;
+}
+article{
+    font-size:1.3em
+}
+.navigation {
+    margin-top:20px;
+    padding-left:0
+}
+.navigation ul{
+    padding-left: 16px
+}
+.navigation li{
+    display:inline;
+}

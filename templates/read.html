@@ -1,0 +1,13 @@
+        {% extends "base.html" %}
+        {% block content %}
+        <div class="col-md-12">
+            <h1>{{data['title']}}</h1>
+            <article>
+                {{data['article']}}
+            </article>
+         </div>
+        {% endblock %}
+        {% block navigation %}
+        <li><a href="/version/{{filename}}" class="btn btn-default">version</a></li>
+        <li><a href="/modify/{{filename}}" class="btn btn-default">modify</a></li>
+        {% endblock %}
