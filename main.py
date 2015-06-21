@@ -6,7 +6,26 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template('home.html')
+    import os, jinja2
+    list = []
+    for dirName, subdirList, fileList in os.walk('../pages'):
+        if dirName.replace('\\', '/')[:13] == '../pages/.git':
+            continue
+        for fname in fileList:
+            contents = _read(dirName+'/'+fname)
+            if len(contents) == 2:
+                title = contents[0]
+                article = contents[1]
+            else:
+                title = ''
+                article = contents[0]
+            try:
+                t = jinja2.Template(article)
+            except jinja2.exceptions.TemplateSyntaxError as e:
+                print(e)
+                t = 'error'
+            list.append({'title':title, 'article':article, 'filename':fname})
+    return render_template('home.html', list=list)
 
 @app.route("/write")
 def write():
